@@ -1,10 +1,10 @@
-// WeatherCollectionViewController.swift
+// WeatherViewController.swift
 // Copyright © RoadMap. All rights reserved.
 
 import UIKit
 
 /// Weather info
-final class WeatherCollectionViewController: UICollectionViewController {
+final class WeatherViewController: UIViewController {
     // MARK: - Constants
 
     private enum Constants {
@@ -16,18 +16,20 @@ final class WeatherCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+}
 
-    // MARK: UICollectionViewDataSource
+// MARK: - UICollectionViewDataSource
 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+extension WeatherViewController: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         1
     }
 
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         10
     }
 
-    override func collectionView(
+    func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
