@@ -10,6 +10,7 @@ final class AllCitiesTableViewCell: UITableViewCell {
     @IBOutlet var cityNameLabel: UILabel!
 
     // MARK: - LifeCycle
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }

@@ -19,6 +19,7 @@
 		D56643D12912FD8700306D42 /* MyCitiesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56643D02912FD8700306D42 /* MyCitiesTableViewController.swift */; };
 		D56643D529130B3B00306D42 /* WeatherCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56643D429130B3B00306D42 /* WeatherCollectionViewController.swift */; };
 		D56643D729130B5900306D42 /* WeatherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56643D629130B5900306D42 /* WeatherCollectionViewCell.swift */; };
+		D5CFB2592915F900003DD149 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CFB2582915F900003DD149 /* GradientView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		D56643D02912FD8700306D42 /* MyCitiesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCitiesTableViewController.swift; sourceTree = "<group>"; };
 		D56643D429130B3B00306D42 /* WeatherCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCollectionViewController.swift; sourceTree = "<group>"; };
 		D56643D629130B5900306D42 /* WeatherCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCollectionViewCell.swift; sourceTree = "<group>"; };
+		D5CFB2582915F900003DD149 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,15 +70,15 @@
 		D56643B129117D3000306D42 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
+				D5CFB2572915F8DA003DD149 /* CustomView */,
 				D56643D229130AE300306D42 /* Login */,
 				D56643CD2912FD4100306D42 /* MyCities */,
 				D56643C82912F06200306D42 /* AllCities */,
 				D56643D329130AF300306D42 /* Weather */,
-				D56643B229117D3000306D42 /* AppDelegate.swift */,
-				D56643B429117D3000306D42 /* SceneDelegate.swift */,
 				D56643B829117D3000306D42 /* Main.storyboard */,
 				D56643BB29117D3100306D42 /* Assets.xcassets */,
 				D56643BD29117D3100306D42 /* LaunchScreen.storyboard */,
+				D5CFB2562915EDB5003DD149 /* Application */,
 				D56643C029117D3100306D42 /* Info.plist */,
 			);
 			path = Weather;
@@ -115,6 +117,23 @@
 				D56643D629130B5900306D42 /* WeatherCollectionViewCell.swift */,
 			);
 			path = Weather;
+			sourceTree = "<group>";
+		};
+		D5CFB2562915EDB5003DD149 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				D56643B229117D3000306D42 /* AppDelegate.swift */,
+				D56643B429117D3000306D42 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		D5CFB2572915F8DA003DD149 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				D5CFB2582915F900003DD149 /* GradientView.swift */,
+			);
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,6 +252,7 @@
 			files = (
 				D56643D729130B5900306D42 /* WeatherCollectionViewCell.swift in Sources */,
 				D56643B729117D3000306D42 /* LoginViewController.swift in Sources */,
+				D5CFB2592915F900003DD149 /* GradientView.swift in Sources */,
 				D56643B329117D3000306D42 /* AppDelegate.swift in Sources */,
 				D56643D12912FD8700306D42 /* MyCitiesTableViewController.swift in Sources */,
 				D56643D529130B3B00306D42 /* WeatherCollectionViewController.swift in Sources */,
