@@ -8,8 +8,10 @@ class MyCitiesTableViewController: UITableViewController {
     // MARK: - Constants
 
     private enum Constants {
-        static let identifier = "myCitiesCellID"
+        static let cellID = "cityCellID"
         static let addCitySegueID = "addCitySegueID"
+        static let cityTableViewCellXib = "CityTableViewCellXib"
+        static let weatherViewControllerSegueID = "weatherViewControllerSegueID"
     }
 
     // MARK: - Public Properties
@@ -20,15 +22,16 @@ class MyCitiesTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTableView()
     }
 
     // MARK: - IBAction
 
     @IBAction func addCity(segue: UIStoryboardSegue) {
         if segue.identifier == Constants.addCitySegueID {
-            guard let allCitiesViewController = segue.source as? AllCitiesTableViewController
+            guard let allCitiesViewController = segue.source as? AllCitiesViewController
             else { return }
-            if let indexPath = allCitiesViewController.tableView.indexPathForSelectedRow {
+            if let indexPath = allCitiesViewController.allCitiesTableView.indexPathForSelectedRow {
                 let city = allCitiesViewController.cities[indexPath.row]
                 if !cities.contains(city) {
                     cities.append(city)
@@ -36,6 +39,15 @@ class MyCitiesTableViewController: UITableViewController {
                 }
             }
         }
+    }
+
+    // MARK: - Private Properties
+
+    private func setupTableView() {
+        tableView.register(
+            UINib(nibName: Constants.cityTableViewCellXib, bundle: nil),
+            forCellReuseIdentifier: Constants.cellID
+        )
     }
 
     // MARK: - Table view data source
@@ -50,13 +62,15 @@ class MyCitiesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: Constants.identifier,
+            withIdentifier: Constants.cellID,
             for: indexPath
-        ) as? MyCitiesTableViewCell
+        ) as? CityTableViewCell
         else { return UITableViewCell() }
-        cell.myCitiesLabel.text = cities[indexPath.row]
+        cell.cityNameLabel.text = cities[indexPath.row]
         return cell
     }
+
+    // MARK: - UITableViewDelegate
 
     override func tableView(
         _ tableView: UITableView,
@@ -67,5 +81,9 @@ class MyCitiesTableViewController: UITableViewController {
             cities.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: Constants.weatherViewControllerSegueID, sender: nil)
     }
 }

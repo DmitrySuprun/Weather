@@ -19,13 +19,15 @@ final class LoginViewController: UIViewController {
 
     @IBOutlet private var loginTextField: UITextField!
     @IBOutlet private var passwordTextField: UITextField!
-    @IBOutlet var backgroundScrollView: UIScrollView!
+    @IBOutlet private var backgroundScrollView: UIScrollView!
 
     // MARK: - LifeCycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        // FIXME: - autologin
+        performSegue(withIdentifier: "myCitiesSegueID", sender: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {
