@@ -114,7 +114,11 @@
                     <navigationItem key="navigationItem" id="DFt-BG-sZE"/>
                     <connections>
                         <outlet property="backgroundScrollView" destination="u2i-fL-ndN" id="ejV-ne-xcm"/>
+                        <outlet property="enterButton" destination="HBh-Aw-tm5" id="c6F-pA-e5H"/>
+                        <outlet property="loginLabel" destination="9Zr-gJ-ORe" id="1i9-kH-Qqf"/>
                         <outlet property="loginTextField" destination="nSE-x8-qO2" id="qHP-gs-UPb"/>
+                        <outlet property="logoNameLabel" destination="blO-WM-arN" id="teY-Dz-Hsv"/>
+                        <outlet property="passwordLabel" destination="ZEX-AH-0Me" id="POw-55-3Ar"/>
                         <outlet property="passwordTextField" destination="YwC-cn-gWK" id="deZ-R1-t45"/>
                     </connections>
                 </viewController>

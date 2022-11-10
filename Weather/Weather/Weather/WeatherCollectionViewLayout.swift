@@ -17,6 +17,8 @@ final class WeatherCollectionViewLayout: UICollectionViewLayout {
     private var cellHeight: CGFloat = 128
     private var totalCellsHeight: CGFloat = 0
     
+    // MARK: - Public Properties
+    
     override func prepare() {
         cacheAttributes = [:]
         guard let collectionView = collectionView else { return }
@@ -68,7 +70,7 @@ final class WeatherCollectionViewLayout: UICollectionViewLayout {
     }
     
     override var collectionViewContentSize: CGSize {
-        return CGSize(width: self.collectionView?.frame.width ?? 0,
-                      height: self.totalCellsHeight)
+        return CGSize(width: collectionView?.frame.width ?? 0,
+                      height: totalCellsHeight)
     }
 }
