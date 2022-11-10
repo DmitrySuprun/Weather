@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D507E395291D370C00679342 /* WeatherCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D507E394291D370C00679342 /* WeatherCollectionViewLayout.swift */; };
 		D56643B329117D3000306D42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56643B229117D3000306D42 /* AppDelegate.swift */; };
 		D56643B529117D3000306D42 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56643B429117D3000306D42 /* SceneDelegate.swift */; };
 		D56643B729117D3000306D42 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56643B629117D3000306D42 /* LoginViewController.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D507E394291D370C00679342 /* WeatherCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCollectionViewLayout.swift; sourceTree = "<group>"; };
 		D56643AF29117D3000306D42 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D56643B229117D3000306D42 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D56643B429117D3000306D42 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				D56643D429130B3B00306D42 /* WeatherViewController.swift */,
+				D507E394291D370C00679342 /* WeatherCollectionViewLayout.swift */,
 				D56643D629130B5900306D42 /* WeatherCollectionViewCell.swift */,
 			);
 			path = Weather;
@@ -270,6 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D507E395291D370C00679342 /* WeatherCollectionViewLayout.swift in Sources */,
 				D56643D729130B5900306D42 /* WeatherCollectionViewCell.swift in Sources */,
 				D5CFB25C291604B1003DD149 /* WeekDayPicker.swift in Sources */,
 				D56643B729117D3000306D42 /* LoginViewController.swift in Sources */,
