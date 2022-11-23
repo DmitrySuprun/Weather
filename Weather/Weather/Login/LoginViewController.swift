@@ -6,7 +6,7 @@ import UIKit
 /// User authentication
 final class LoginViewController: UIViewController {
     // MARK: - Constants
-
+    
     private enum Constants {
         static let loginText = "1"
         static let passwordText = "1"
@@ -14,32 +14,43 @@ final class LoginViewController: UIViewController {
         static let wrongPasswordText = "Wrong Password"
         static let okText = "Ok"
     }
-
+    
     // MARK: - Private Visual Components
-
+    
+    @IBOutlet private weak var logoNameLabel: UILabel!
+    @IBOutlet private weak var loginLabel: UILabel!
+    @IBOutlet private weak var passwordLabel: UILabel!
+    
     @IBOutlet private var loginTextField: UITextField!
     @IBOutlet private var passwordTextField: UITextField!
     @IBOutlet private var backgroundScrollView: UIScrollView!
-
+    
+    @IBOutlet private weak var enterButton: UIButton!
+    
     // MARK: - LifeCycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        animateTextFieldsAppearing()
+        animateLogoAppearing()
+        animateLabelsAppearing()
+        animateEnterButton()
+        
         // FIXME: - autologin
-        performSegue(withIdentifier: "myCitiesSegueID", sender: nil)
+        //        performSegue(withIdentifier: "myCitiesSegueID", sender: nil)
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         addObserver()
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         removeObserver()
     }
-
+    
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         let checkResult = checkUserData()
         if !checkResult {
@@ -47,9 +58,9 @@ final class LoginViewController: UIViewController {
         }
         return checkResult
     }
-
+    
     // MARK: - Objc Private Methods
-
+    
     @objc private func keyboardWasShownAction(notification: Notification) {
         let info = notification.userInfo as? NSDictionary
         let keyboardSize = (info?.value(forKey: UIResponder.keyboardFrameEndUserInfoKey) as? NSValue)?.cgRectValue.size
@@ -57,27 +68,27 @@ final class LoginViewController: UIViewController {
         backgroundScrollView?.contentInset = contentInsets
         backgroundScrollView?.scrollIndicatorInsets = contentInsets
     }
-
+    
     @objc private func keyboardWillBeHiddenAction(notification: Notification) {
         let contentInsets = UIEdgeInsets.zero
         backgroundScrollView?.contentInset = contentInsets
     }
-
+    
     @objc private func hideKeyboardAction() {
         backgroundScrollView?.endEditing(true)
     }
-
+    
     // MARK: - IBAction
-
+    
     @IBAction private func loginButton(_ sender: Any) {}
-
+    
     // MARK: - Private Methods
-
+    
     private func setupUI() {
         let hideKeyboardGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboardAction))
         backgroundScrollView.addGestureRecognizer(hideKeyboardGestureRecognizer)
     }
-
+    
     private func addObserver() {
         NotificationCenter.default.addObserver(
             self,
@@ -92,7 +103,7 @@ final class LoginViewController: UIViewController {
             object: nil
         )
     }
-
+    
     private func removeObserver() {
         NotificationCenter.default.removeObserver(
             self,
@@ -105,7 +116,7 @@ final class LoginViewController: UIViewController {
             object: nil
         )
     }
-
+    
     private func checkUserData() -> Bool {
         let login = loginTextField.text
         let password = passwordTextField.text
@@ -115,8 +126,58 @@ final class LoginViewController: UIViewController {
             return false
         }
     }
-
-    func showLoginErrorAlertController() {
+    
+    private func animateTextFieldsAppearing() {
+        let offset = view.bounds.width
+        loginTextField.transform = CGAffineTransform(translationX: -offset, y: 0)
+        passwordTextField.transform = CGAffineTransform(translationX: offset, y: 0)
+        UIView.animate(withDuration: 1,
+                       delay: 1,
+                       options: .curveEaseOut,
+                       animations: {
+            self.loginTextField.transform = .identity
+            self.passwordTextField.transform = .identity
+        })
+    }
+    
+    private func animateLogoAppearing() {
+        self.logoNameLabel.transform = CGAffineTransform(translationX: 0,
+                                                         y: view.bounds.height/2)
+        UIView.animate(withDuration: 1,
+                       delay: 1,
+                       usingSpringWithDamping: 0.5,
+                       initialSpringVelocity: 0,
+                       options: .curveEaseOut,
+                       animations: {
+            self.logoNameLabel.transform = .identity
+        })
+    }
+    
+    private func animateEnterButton() {
+        let animation = CASpringAnimation(keyPath: "transform.scale")
+        animation.fromValue = 0
+        animation.toValue = 1
+        animation.stiffness = 200
+        animation.mass = 2
+        animation.duration = 2
+        animation.beginTime = CACurrentMediaTime() + 1
+        animation.fillMode = CAMediaTimingFillMode.backwards
+        self.enterButton.layer.add(animation, forKey: nil)
+    }
+    
+    func animateLabelsAppearing() {
+        let fadeInAnimation = CABasicAnimation(keyPath: #keyPath(CALayer.opacity))
+        fadeInAnimation.fromValue = 0
+        fadeInAnimation.toValue = 1
+        fadeInAnimation.duration = 3
+        fadeInAnimation.beginTime = CACurrentMediaTime() + 1
+        fadeInAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
+        fadeInAnimation.fillMode = CAMediaTimingFillMode.backwards
+        loginLabel.layer.add(fadeInAnimation, forKey: nil)
+        passwordLabel.layer.add(fadeInAnimation, forKey: nil)
+    }
+    
+    private func showLoginErrorAlertController() {
         let alertWrongPassword = UIAlertController(
             title: Constants.errorText,
             message: Constants.wrongPasswordText,

@@ -13,8 +13,6 @@ final class WeatherCollectionViewCell: UICollectionViewCell {
             layer.shadowRadius = 10
             layer.shadowOpacity = 1
             layer.shadowOffset = CGSize(width: 5, height: 5)
-            print(layer.frame)
-            print(layer)
         }
     }
    
