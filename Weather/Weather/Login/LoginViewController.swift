@@ -1,6 +1,7 @@
 // LoginViewController.swift
 // Copyright © RoadMap. All rights reserved.
 
+import Alamofire
 import UIKit
 
 /// User authentication
@@ -141,8 +142,8 @@ final class LoginViewController: UIViewController {
     }
     
     private func animateLogoAppearing() {
-        self.logoNameLabel.transform = CGAffineTransform(translationX: 0,
-                                                         y: view.bounds.height/2)
+        logoNameLabel.transform = CGAffineTransform(translationX: 0,
+                                                         y: view.bounds.height)
         UIView.animate(withDuration: 1,
                        delay: 1,
                        usingSpringWithDamping: 0.5,
@@ -154,6 +155,7 @@ final class LoginViewController: UIViewController {
     }
     
     private func animateEnterButton() {
+    
         let animation = CASpringAnimation(keyPath: "transform.scale")
         animation.fromValue = 0
         animation.toValue = 1
@@ -162,7 +164,7 @@ final class LoginViewController: UIViewController {
         animation.duration = 2
         animation.beginTime = CACurrentMediaTime() + 1
         animation.fillMode = CAMediaTimingFillMode.backwards
-        self.enterButton.layer.add(animation, forKey: nil)
+        enterButton.layer.add(animation, forKey: nil)
     }
     
     func animateLabelsAppearing() {
